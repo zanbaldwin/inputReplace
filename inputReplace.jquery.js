@@ -29,8 +29,9 @@
 				if(input.is(":checked")) {
 					replace.addClass(onClass);
 				}
+				// Update the visuals when the inputs get changed, and hide the original form element.
 				input.bind("change", function(event) {
-					if(type == 'radio' && typeof event.srcElement !== "undefined") {
+					if(type == "radio" && typeof event.srcElement !== "undefined") {
 						var others = $("input[name='" + input.attr("name") + "']");
 						others.trigger("change");
 					}
