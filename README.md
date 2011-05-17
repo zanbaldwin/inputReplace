@@ -39,5 +39,16 @@ An example of such styling is given below.
         background-position: 0 -21px !important;
     }
 
+Compatibility
+-------------
+
+As of the update made on the 17th May, 2011, this plugin is now compatable with
+the following browsers:
+
+- Firefox (3.6+)
+- WebKit
+- Opera (10+)
+- IE (6+)
+
 [jquery]: http://jquery.com/ "jQuery JavaScript Framework"
 [mniz]: https://github.com/mynameiszanders "Alexander Baldwin GitHub Profile"
