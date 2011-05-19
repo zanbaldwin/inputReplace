@@ -17,7 +17,7 @@
 		'inputReplace': function() {
 			var inputs = $(this);
 			// Filter out any elements that are not radio or checkbox inputs.
-			inputs = inputs.filter("input[type=radio], input[type=checkbox]");
+			inputs = inputs.filter("input[type='radio'], input[type='checkbox']");
 			$.each(inputs, function(index, element) {
 				var input	= $(element),
 					type	= input.attr("type"),
@@ -33,14 +33,18 @@
 					// Triggering the click event will change the value of the
 					// original form input.
 					input.trigger("click");
-					// Triggering the change event will the script to detect
-					// when to update the stylable element's visual
-					// representation of the original input.
-					$("input[name='" + input.attr("name") + "']").trigger("change");
 				});
-				// When the change event is triggered, update the stylable
-				// element's visual representation of the original form input.
+				// Detecting a change in the input state.
 				input.bind("change", function(event) {
+					// Triggering the change event will cause the script to
+					// detect when to update the stylable element's visual
+					// representation of the original input.
+					$("input[name='" + input.attr("name") + "']").trigger("changestyle");
+				});
+				// Create a custom, separate event for all inputs with the same
+				// name will prevent errors occuring when clicking on a radio
+				// buttons label.
+				input.bind("changestyle", function(event) {
 					input.is(":checked") ? replace.addClass(onClass) : replace.removeClass(onClass);
 				});
 				// Make sure the visual representation is correct at the start
