@@ -7,20 +7,22 @@
  * @link		https://github.com/mynameiszanders/inputReplacer
  */
 (function(undefined) {
-	var window = this,
-		document = window.document,
-		$ = window.jQuery;
+	var $ = this.jQuery;
 	if(typeof $ != "function") {
 		return false;
 	}
 	$.extend($.fn, {
-		'inputReplace': function() {
+		"inputReplace": function() {
 			var inputs = $(this);
 			// Filter out any elements that are not radio or checkbox inputs.
 			inputs = inputs.filter("input[type='radio'], input[type='checkbox']");
 			$.each(inputs, function(index, element) {
-				var input	= $(element),
-					type	= input.attr("type"),
+				var input	= $(element);
+				// If it has already been replaced, no point doing it again.
+				if(input.data("inputReplaced")) {
+					return true;
+				}
+				var type	= input.attr("type"),
 					onClass	= type + "on",
 					replace	= $(document.createElement("span"));
 				// Replace the original inputs with their stylable counterparts.
@@ -32,7 +34,7 @@
 				replace.bind("click", function(event) {
 					// Triggering the click event will change the value of the
 					// original form input.
-					input.trigger("click");
+					input.trigger("click").trigger("change");
 				});
 				// Detecting a change in the input state.
 				input.bind("change", function(event) {
@@ -52,6 +54,7 @@
 				if(input.is(":checked")) {
 					replace.addClass(onClass);
 				}
+				input.data("inputReplaced", true);
 			});
 		}
 	});
