@@ -42,8 +42,8 @@ An example of such styling is given below.
 Compatibility
 -------------
 
-As of the update made on the 17th May, 2011, this plugin is now compatable with
-the following browsers:
+As of [version 1.0][versionone] (16th June, 2011), this plugin is now compatable
+with the following browsers:
 
 - Firefox (3.6+)
 - WebKit
@@ -52,3 +52,4 @@ the following browsers:
 
 [jquery]: http://jquery.com/ "jQuery JavaScript Framework"
 [mniz]: https://github.com/mynameiszanders "Alexander Baldwin GitHub Profile"
+[versionone]: https://github.com/mynameiszanders/inputReplace/tree/v1.0 "inputReplace v1.0"
